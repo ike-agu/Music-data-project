@@ -1,0 +1,21 @@
+{
+  "name": "music-data-project",
+  "version": "1.0.0",
+  "description": "Frontend application which displays detailed information about artists, songs, most songs listened etc.",
+  "main": "data.js",
+  "scripts": {
+    "start": "http-server -c-1 . -p 8080", 
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ike-agu/Music-data-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ike-agu/Music-data-project/issues"
+  },
+  "homepage": "https://github.com/ike-agu/Music-data-project#readme"
+}
