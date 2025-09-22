@@ -23,3 +23,17 @@ function populateUsers(){
   })
 }
 populateUsers();
+
+
+const message = document.getElementById("message");
+//initial default message
+message.textContent = "Please select a user. Thank you!";
+//Handles message to display when a user is selected.
+selectUser.addEventListener("change", () =>{
+  const selectedID = selectUser.value;
+  if(selectedID){
+    message.textContent = `You have selected User ${selectedID} `
+  }else{
+    message.textContent = "Please select a user. Thank you!"
+  }
+});
