@@ -10040,4 +10040,3 @@ export function getListenEvents(userID) {
   }[userID];
 }
 
-console.log(getUserIDs[1]);
