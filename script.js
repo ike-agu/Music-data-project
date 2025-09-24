@@ -5,35 +5,63 @@
 // You can't open the index.html file using a file:// URL.
 
 // import { countUsers } from "./common.js";
-import { getUserIDs } from "./data.js";
+// import { getMaxListeners } from "events";
+import { getListenEvents, getUserIDs, getSong } from "./data.js";
 
 // window.onload = function () {
 //   document.querySelector("body").innerText = `There are ${countUsers()} users.`;
 // };
 
+//-----showing users, selecting one, and displaying how many events they have--------
 const selectUser = document.getElementById("user-select");
+const content = document.getElementById("content")
 
-function populateUsers(){
-  const allUsers = getUserIDs();// I'm calling the function
-  allUsers.forEach( (id) =>{
-    const option = document.createElement("option")
-    option.value = id,
+function populateUsers() {
+  const allUsers = getUserIDs(); // I'm calling the function
+  allUsers.forEach((id) => {
+    const option = document.createElement("option");
+    option.value = id;
     option.textContent = id;
-    selectUser.appendChild(option)
-  })
+    selectUser.appendChild(option);
+  });
 }
 populateUsers();
 
-
 const message = document.getElementById("message");
-//initial default message
-message.textContent = "Please select a user. Thank you!";
+
+message.textContent = "Please select a user. Thank you!";//initial default message
 //Handles message to display when a user is selected.
-selectUser.addEventListener("change", () =>{
-  const selectedID = selectUser.value;
-  if(selectedID){
-    message.textContent = `You have selected User ${selectedID} `
-  }else{
-    message.textContent = "Please select a user. Thank you!"
+selectUser.addEventListener("change", () => {
+  const selectedId = selectUser.value;
+  if (selectedId) {
+    message.textContent = `You have selected User ${selectedId} `;
   }
+
+  // content.textContent = "";
+  const events = getListenEvents(selectedId) || [];
+  const resultOfP = document.createElement("p");
+  resultOfP.innerHTML = `<p>User ${selectedId} has ${events.length} listen events</p>`;
+  content.appendChild(resultOfP);
 });
+
+//----users most listened songs(based on number of listens)----------
+
+function getUserMostListenedSong(userId){
+  const events = getListenEvents(userId)
+
+  //account for when there are no song listened
+  if(events.length === 0){
+    document.getElementById("mostListenedSongs").textContent =
+      "This user has no listened song";
+    return;
+  }
+
+  //count listen per songs
+
+
+  //find the song with the most listen
+
+  //get the song details
+
+  // display the results on the HTML page
+}
